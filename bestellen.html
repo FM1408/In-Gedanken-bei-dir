@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jetzt bestellen – In Gedanken bei dir</title>
+  <meta name="description" content="Brief einrichten und monatlich Freude schenken." />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* === Page-specific form styles === */
+    .form-page {
+      min-height: 100vh;
+      padding: 120px 24px 80px;
+      background: var(--bg);
+    }
+    .form-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .form-page h1 {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+    .form-page h1 em { color: var(--accent); }
+    .form-intro {
+      color: var(--text-muted);
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      margin-bottom: 48px;
+    }
+
+    /* Fieldset / groups */
+    .form-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-bottom: 24px;
+    }
+    .form-section-title {
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .form-group:last-child { margin-bottom: 0; }
+    label {
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(234,109,139,0.12);
+      background: var(--white);
+    }
+    input::placeholder { color: #BDB0B0; }
+
+    /* Themen-Auswahl */
+    .themen-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .thema-option {
+      display: none;
+    }
+    .thema-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--font-ui);
+      font-size: 0.88rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s;
+      background: var(--bg);
+      color: var(--text-muted);
+    }
+    .thema-option:checked + .thema-label {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: var(--accent);
+      font-weight: 500;
+    }
+    .thema-label:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .themen-hint {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    /* Submit */
+    .form-submit {
+      text-align: center;
+      margin-top: 16px;
+    }
+    .form-submit .btn {
+      font-size: 1rem;
+      padding: 16px 48px;
+    }
+    .form-legal {
+      font-family: var(--font-ui);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.6;
+    }
+    .form-legal a { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .themen-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">In Gedanken <span>bei dir</span></a>
+      <a href="index.html" class="nav-cta">← Zurück</a>
+    </div>
+  </nav>
+
+  <!-- FORM PAGE -->
+  <main class="form-page">
+    <div class="form-wrap">
+
+      <h1><em>Brief einrichten</em><br>und Freude schenken</h1>
+      <p class="form-intro">Einmal ausgefüllt, kommt jeden Monat ein persönlicher Brief an.</p>
+
+      <!-- EMPFÄNGER -->
+      <div class="form-section">
+        <p class="form-section-title">Angaben zur beschenkten Person</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="emp-vorname">Vorname *</label>
+            <input type="text" id="emp-vorname" placeholder="z. B. Elisabeth" required />
+          </div>
+          <div class="form-group">
+            <label for="emp-nachname">Nachname *</label>
+            <input type="text" id="emp-nachname" placeholder="z. B. Müller" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="emp-rufname">Rufname</label>
+            <input type="text" id="emp-rufname" placeholder="z. B. Oma Liesl" />
+          </div>
+          <div class="form-group">
+            <label for="emp-geburtstag">Geburtstag</label>
+            <input type="date" id="emp-geburtstag" />
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 8px;">
+          <label>Bitte 2 Themen auswählen *</label>
+          <p class="themen-hint">Diese Themen fließen in die Briefe ein.</p>
+          <div class="themen-grid">
+            <input type="checkbox" id="th-geo" name="thema" value="Geographie" class="thema-option" /><label class="thema-label" for="th-geo">🌍 Geographie</label>
+            <input type="checkbox" id="th-ges" name="thema" value="Geschichte" class="thema-option" /><label class="thema-label" for="th-ges">📜 Geschichte</label>
+            <input type="checkbox" id="th-koc" name="thema" value="Kochen" class="thema-option" /><label class="thema-label" for="th-koc">🍳 Kochen</label>
+            <input type="checkbox" id="th-kul" name="thema" value="Kulturen" class="thema-option" /><label class="thema-label" for="th-kul">🌏 Kulturen</label>
+            <input type="checkbox" id="th-mus" name="thema" value="Musik" class="thema-option" /><label class="thema-label" for="th-mus">🎵 Musik</label>
+            <input type="checkbox" id="th-nat" name="thema" value="Natur" class="thema-option" /><label class="thema-label" for="th-nat">🌿 Natur</label>
+            <input type="checkbox" id="th-rei" name="thema" value="Reisen" class="thema-option" /><label class="thema-label" for="th-rei">✈️ Reisen</label>
+            <input type="checkbox" id="th-spo" name="thema" value="Sport" class="thema-option" /><label class="thema-label" for="th-spo">⚽ Sport</label>
+            <input type="checkbox" id="th-tv"  name="thema" value="TV" class="thema-option" /><label class="thema-label" for="th-tv">📺 TV</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSÖNLICHER -->
+      <div class="form-section">
+        <p class="form-section-title">Für eine persönlichere Ansprache</p>
+
+        <div class="form-group">
+          <label for="emp-beruf">Ehemaliger Beruf</label>
+          <input type="text" id="emp-beruf" placeholder="z. B. Lehrerin, Bäcker …" />
+        </div>
+        <div class="form-group">
+          <label for="emp-herkunft">Aufgewachsen in</label>
+          <input type="text" id="emp-herkunft" placeholder="z. B. München, Schwarzwald …" />
+        </div>
+        <div class="form-group">
+          <label for="emp-interesse">Besonderes Interesse</label>
+          <input type="text" id="emp-interesse" placeholder="z. B. Gartenarbeit, Heimatkunde …" />
+        </div>
+      </div>
+
+      <!-- ADRESSE EMPFÄNGER -->
+      <div class="form-section">
+        <p class="form-section-title">Postadresse der beschenkten Person</p>
+
+        <div class="form-group">
+          <label for="emp-strasse">Straße & Hausnummer *</label>
+          <input type="text" id="emp-strasse" placeholder="Musterstraße 12" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="emp-plz">Postleitzahl *</label>
+            <input type="text" id="emp-plz" placeholder="80331" required />
+          </div>
+          <div class="form-group">
+            <label for="emp-stadt">Stadt *</label>
+            <input type="text" id="emp-stadt" placeholder="München" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- BESTELLER -->
+      <div class="form-section">
+        <p class="form-section-title">Angaben der bestellenden Person</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="best-vorname">Vorname *</label>
+            <input type="text" id="best-vorname" required />
+          </div>
+          <div class="form-group">
+            <label for="best-nachname">Nachname *</label>
+            <input type="text" id="best-nachname" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="best-email">E-Mail-Adresse *</label>
+          <input type="email" id="best-email" placeholder="deine@email.de" required />
+        </div>
+        <div class="form-group">
+          <label for="best-strasse">Straße & Hausnummer *</label>
+          <input type="text" id="best-strasse" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="best-plz">Postleitzahl *</label>
+            <input type="text" id="best-plz" required />
+          </div>
+          <div class="form-group">
+            <label for="best-stadt">Stadt *</label>
+            <input type="text" id="best-stadt" required />
+          </div>
+        </div>
+      </div>
+
+      <!-- ZAHLUNG (Platzhalter) -->
+      <div class="form-section">
+        <p class="form-section-title">Zahlungsmethode</p>
+        <p style="font-family: var(--font-ui); font-size: 0.92rem; color: var(--text-muted);">
+          Die Zahlungsabwicklung wird hier eingebunden (z. B. Stripe, PayPal).<br>
+          Dieser Bereich wird in einem späteren Schritt integriert.
+        </p>
+      </div>
+
+      <!-- SUBMIT -->
+      <div class="form-submit">
+        <button type="button" class="btn btn-primary">Jetzt Brief einrichten</button>
+        <p class="form-legal">
+          Mit dem Absenden stimmst du unserer
+          <a href="datenschutz.html">Datenschutzerklärung</a> zu.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Limit thema-checkboxes to 2
+    const checkboxes = document.querySelectorAll('input[name="thema"]');
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        const checked = [...checkboxes].filter(c => c.checked);
+        if (checked.length > 2) {
+          cb.checked = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
